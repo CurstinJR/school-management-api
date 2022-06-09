@@ -1,0 +1,38 @@
+# spring config
+spring:
+
+  main:
+    banner-mode: off
+
+  # database config
+  datasource:
+    url: jdbc:h2:mem:main
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  # data config
+  #  sql:
+  #    init:
+  #      platform: h2
+  #      data-locations: classpath:sql/data-h2.sql
+
+  # h2 config
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        trace: false
+        web-allow-others: false
+
+  # jpa/hibernate config
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
