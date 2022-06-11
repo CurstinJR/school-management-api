@@ -7,4 +7,15 @@ Date: 11 of June 2022;
 public class Name {
     private String firstName,middleName,lastName;
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 }
