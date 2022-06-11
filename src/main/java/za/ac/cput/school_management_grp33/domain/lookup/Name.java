@@ -18,4 +18,7 @@ public class Name {
     public String getLastName() {
         return lastName;
     }
+    public static class Builder{
+        private String firstName,middleName,lastName;
+    }
 }
