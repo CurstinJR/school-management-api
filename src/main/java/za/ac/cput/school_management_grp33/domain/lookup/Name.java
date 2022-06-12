@@ -16,5 +16,4 @@ Date: 12 of June 2022;
 @EqualsAndHashCode
 public class Name {
     private String firstName, middleName, lastName;
-    
 }
