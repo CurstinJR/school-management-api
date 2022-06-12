@@ -10,12 +10,11 @@ import org.springframework.util.StringUtils;
  */
 public final class Util {
     public static boolean isEmptyOrNull(String str) {
-        return StringUtils.hasText(str);
+        return !StringUtils.hasText(str);
 
     }
     public static String setEmptyIfNull(String str) {
     if(isEmptyOrNull(str)) return "";
-
         return str;
     }
     public static void  checkStringParam(String paramName, String paramValue){
