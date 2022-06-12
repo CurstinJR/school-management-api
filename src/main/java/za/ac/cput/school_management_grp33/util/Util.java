@@ -1,6 +1,7 @@
 package za.ac.cput.school_management_grp33.util;
 
-import org.apache.commons.lang3.StringUtils;
+
+import org.springframework.util.StringUtils;
 
 /**
  * Utility Class, also known as Helper class.
@@ -12,9 +13,10 @@ public final class Util {
         return StringUtils.isEmpty(str);
 
     }
-    public static String setEmptyIfNull(String str) {
-    if(isEmptyOrNull(str)) return StringUtils.EMPTY;
-    return str;
+    public static boolean setEmptyIfNull(String str) {
+    if(isEmptyOrNull(str)) return StringUtils.isEmpty(str);
+
+        return false;
     }
     public static void  checkStringParam(String paramName, String paramValue){
         if(isEmptyOrNull(paramValue))
