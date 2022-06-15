@@ -17,16 +17,12 @@ Date: 14 March 2022
 @Getter
 @Setter
 @ToString
+@Builder
 @Entity
 public class Country {
    @Id
     @NotNull private String id;
     @NotNull private String name;
-
-    private Country(Builder builder){
-        this.id = builder.id;
-        this.name = builder.name;
-    }
 
     @Override
     public boolean equals(Object o)
@@ -41,24 +37,4 @@ public class Country {
         return getClass().hashCode();
     }
 
-    public static class Builder{
-        private String id;
-        private String name;
-
-        public Builder id(String id){
-            this.id = id;
-            return this;
-        }
-        public Builder name(String name){
-            this.name = name;
-            return this;
-        }
-
-        public Builder copy(Country country){
-            this.id = country.id;
-            this.name = country.name;
-            return this;
-        }
-        public Country build(){return new Country(this);}
-    }
 }
