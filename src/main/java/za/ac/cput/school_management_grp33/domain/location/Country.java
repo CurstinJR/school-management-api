@@ -16,6 +16,7 @@ Date: 14 March 2022
 @NoArgsConstructor
 @Builder
 @Getter
+@Setter
 @ToString
 @Entity
 public class Country {
