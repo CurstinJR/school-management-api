@@ -12,10 +12,10 @@ spring:
     password:
 
   # data config
-  #  sql:
-  #    init:
-  #      platform: h2
-  #      data-locations: classpath:sql/data-h2.sql
+  sql:
+    init:
+      platform: h2
+      data-locations: classpath:sql/data-h2.sql
 
   # h2 config
   h2:
