@@ -14,10 +14,9 @@ Date: 14 March 2022
  */
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
 @Builder
+@Getter
+@ToString
 @Entity
 public class Country {
    @Id
