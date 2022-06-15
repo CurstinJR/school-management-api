@@ -1,7 +1,6 @@
 package za.ac.cput.school_management_grp33.factory.location;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
 import za.ac.cput.school_management_grp33.domain.location.Country;
 
 import static org.junit.jupiter.api.Assertions.*;
