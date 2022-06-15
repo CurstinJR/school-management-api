@@ -4,9 +4,15 @@ import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
+/**
+ * String Utility Class, also known as Helper class.
+ * It contains a bunch of related methods to Strings,
+ * so they can be reused across the application.
+ */
 @UtilityClass
 @Slf4j
 public class StringUtility {
+
     public static boolean isEmpty(String str) {
         return !StringUtils.hasText(str);
     }
