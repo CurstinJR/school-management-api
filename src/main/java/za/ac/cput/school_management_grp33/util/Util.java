@@ -21,4 +21,14 @@ public final class Util {
         if(isEmptyOrNull(paramValue))
             throw new IllegalArgumentException(String.format("invalid value for param: %s",paramName));
     }
+
+    public static int checkRangeNum(int postalCode) {
+        if(postalCode >= 1000 && postalCode <=9999) {
+            System.out.println("The num is within the range "+postalCode);
+        }
+        else {
+            System.out.println(" the num is out of the range");
+        }
+        return postalCode;
+    }
 }
