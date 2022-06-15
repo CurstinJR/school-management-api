@@ -26,10 +26,9 @@ import static org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 class StudentRepositoryTest {
 
+    private final Student student = StudentFactory.build("100", "joe13@email.com", new Name());
     @Autowired
     private StudentRepository studentRepository;
-
-    private final Student student = StudentFactory.build("100", "joe13@email.com", new Name());
 
     @Test
     @Order(1)

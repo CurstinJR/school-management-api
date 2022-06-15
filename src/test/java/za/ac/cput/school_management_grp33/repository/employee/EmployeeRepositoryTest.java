@@ -26,10 +26,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 class EmployeeRepositoryTest {
 
+    private final Employee employee = EmployeeFactory.build("100", "joe13@email.com", new Name());
     @Autowired
     private EmployeeRepository employeeRepository;
-
-    private final Employee employee = EmployeeFactory.build("100", "joe13@email.com", new Name());
 
     @Test
     @Order(1)
