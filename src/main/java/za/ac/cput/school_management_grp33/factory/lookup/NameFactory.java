@@ -13,7 +13,7 @@ public class NameFactory {
     public static Name build(String firstName, String middleName, String lastName) {
 
         StringUtility.checkStringParam("firstName", firstName);
-        StringUtility.checkStringParam("middleName", middleName);
+        StringUtility.setEmptyIfNull(middleName);
         StringUtility.checkStringParam("lastName", lastName);
 
 
