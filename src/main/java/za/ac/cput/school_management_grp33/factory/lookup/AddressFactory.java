@@ -11,19 +11,17 @@ Author:Kevin Lionel Mombo Ndinga (218180500)
 AddressTest.java
  */
 public class AddressFactory {
-    public static Address build(String unitNumber, String complexName, String complexNumber, String streetNumber,
+    public static Address build(String unitNumber, String complexName, String streetNumber,
                                 String streetName, int postalCode, City city) {
 
 
         StringUtility.checkStringParam("unitNumber", unitNumber);
         StringUtility.checkStringParam("complexName", complexName);
-        StringUtility.checkStringParam("complexNumber", complexNumber);
         StringUtility.checkStringParam("streetNumber", streetNumber);
         StringUtility.checkStringParam("streetName", streetName);
         Utils.checkRangeNum(postalCode, 1000, 9000);
 
         return Address.builder().unitNumber(unitNumber).complexName(complexName)
-                .complexNumber(complexNumber)
                 .streetNumber(streetNumber)
                 .streetName(streetName)
                 .city(city).build();
