@@ -11,6 +11,7 @@ import za.ac.cput.school_management_grp33.service.IService;
 import java.util.Optional;
 
 public interface EmployeeService extends IService<Employee, String> {
+
     Optional<Employee> findEmployeeByEmail(String email);
 
     boolean existsByEmail(String email);

@@ -61,6 +61,18 @@ class EmployeeControllerTest {
 
     @Test
     @Order(3)
+    void getEmployeeNameByEmail() {
+        String email = "220275408@mycput.ac.za";
+        String url = BASE_URL + "/name?email=" + email;
+        ResponseEntity<Employee> response = restTemplate.getForEntity(url, Employee.class);
+        assertAll(
+                () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
+                () -> assertNotNull(response.getBody())
+        );
+    }
+
+    @Test
+    @Order(4)
     void getAllEmployees() {
         ResponseEntity<Employee[]> response = restTemplate.getForEntity(BASE_URL, Employee[].class);
         assertAll(
@@ -70,7 +82,7 @@ class EmployeeControllerTest {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     void deleteEmployeeById() {
         String id = "220275408";
         ResponseEntity<Void> response = restTemplate.exchange(BASE_URL + id,

@@ -12,6 +12,7 @@ import za.ac.cput.school_management_grp33.domain.lookup.Name;
 import za.ac.cput.school_management_grp33.factory.employee.EmployeeFactory;
 import za.ac.cput.school_management_grp33.repository.employee.EmployeeRepository;
 import za.ac.cput.school_management_grp33.service.employee.EmployeeService;
+import za.ac.cput.school_management_grp33.util.Utils;
 
 import java.util.List;
 import java.util.Optional;
@@ -77,6 +78,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      */
     @Override
     public Optional<Employee> findEmployeeByEmail(String email) {
+        Utils.validateEmail(email);
         return employeeRepository.findEmployeeByEmail(email);
     }
 

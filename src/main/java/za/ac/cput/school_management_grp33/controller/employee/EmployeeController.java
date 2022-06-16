@@ -21,8 +21,8 @@ import java.util.List;
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
-    public static final String EMPLOYEE_WITH_ID_NOT_FOUND_MSG = "Employee with id: %s not found";
-    public static final String EMPLOYEE_EMAIL_EXISTS_MSG = "Employee email exists: %s";
+    public static final String EMPLOYEE_NOT_FOUND_MSG = "Employee with %s: %s not found.";
+    public static final String EMPLOYEE_EMAIL_EXISTS_MSG = "Employee email exists: %s.";
     private final EmployeeServiceImpl employeeService;
 
     @Autowired
@@ -51,10 +51,26 @@ public class EmployeeController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<?> getEmployeeById(@PathVariable String id) {
-        String notFoundMessage = String.format(EMPLOYEE_WITH_ID_NOT_FOUND_MSG, id);
+        String notFoundMessage = String.format(EMPLOYEE_NOT_FOUND_MSG, "id", id);
         Employee employee = employeeService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(notFoundMessage));
         return ResponseEntity.ok(employee);
+    }
+
+    /**
+     * Handles the request to retrieve an Employee Name object by providing
+     * and email address. Throws 404 NOT_FOUND, if Employee email is not in the
+     * repository. Throws 400 BAD_REQUEST, if email address is malformed.
+     *
+     * @param email String
+     * @return Employee Name object
+     */
+    @GetMapping("/name")
+    public ResponseEntity<?> getEmployeeNameByEmail(@RequestParam String email) {
+        String notFoundMessage = String.format(EMPLOYEE_NOT_FOUND_MSG, "email", email);
+        Employee employee = employeeService.findEmployeeByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException(notFoundMessage));
+        return ResponseEntity.ok(employee.getName());
     }
 
     /**
@@ -86,7 +102,7 @@ public class EmployeeController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEmployeeById(@PathVariable String id) {
         if (!employeeService.existsById(id)) {
-            String notFoundMessage = String.format(EMPLOYEE_WITH_ID_NOT_FOUND_MSG, id);
+            String notFoundMessage = String.format(EMPLOYEE_NOT_FOUND_MSG, "id", id);
             throw new ResourceNotFoundException(notFoundMessage);
         }
         employeeService.deleteById(id);

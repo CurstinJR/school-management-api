@@ -13,6 +13,7 @@ import za.ac.cput.school_management_grp33.domain.lookup.Name;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
@@ -23,7 +24,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-public class Employee {
+public class Employee implements Serializable {
 
     @Id
     @NotNull(message = "{validation.field.staffId.mandatory}")
