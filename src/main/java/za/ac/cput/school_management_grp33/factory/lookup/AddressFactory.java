@@ -15,8 +15,8 @@ public class AddressFactory {
                                 String streetName, int postalCode, City city) {
 
 
-        StringUtility.checkStringParam("unitNumber", unitNumber);
-        StringUtility.checkStringParam("complexName", complexName);
+        StringUtility.setEmptyIfNull(unitNumber);
+        StringUtility.setEmptyIfNull(complexName);
         StringUtility.checkStringParam("streetNumber", streetNumber);
         StringUtility.checkStringParam("streetName", streetName);
         Utils.checkRangeNum(postalCode, 1000, 9000);
