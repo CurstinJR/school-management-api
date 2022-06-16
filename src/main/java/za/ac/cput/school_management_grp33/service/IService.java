@@ -6,6 +6,7 @@
 package za.ac.cput.school_management_grp33.service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Generic service interface to be used on the domain-specific
@@ -33,11 +34,11 @@ public interface IService<T, ID> {
      * @param id The object type identifier
      * @return The object type specified
      */
-    T findById(ID id);
+    Optional<T> findById(ID id);
 
     /**
      * Removes the object type from the repository.
      * @param t Domain Model Type
      */
-    void delete(T t);
+    void deleteById(ID id);
 }
