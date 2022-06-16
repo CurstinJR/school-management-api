@@ -30,12 +30,25 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    /**
+     * Handles the request to retrieve all employees and return an array of
+     * employee objects.
+     *
+     * @return List of employee objects
+     */
     @GetMapping
     public ResponseEntity<List<Employee>> getAllEmployees() {
         List<Employee> employees = employeeService.findAll();
         return ResponseEntity.ok(employees);
     }
 
+    /**
+     * Handles the request to retrieve a specific Employee object by providing
+     * an ID. Throws 404 NOT_FOUND, if Employee object is not in the repository.
+     *
+     * @param id String
+     * @return 200 and Employee object SUCCESS
+     */
     @GetMapping("/{id}")
     public ResponseEntity<?> getEmployeeById(@PathVariable String id) {
         String notFoundMessage = String.format(EMPLOYEE_WITH_ID_NOT_FOUND_MSG, id);
@@ -44,6 +57,14 @@ public class EmployeeController {
         return ResponseEntity.ok(employee);
     }
 
+    /**
+     * Handles the request to create a new Employee object or update an existing
+     * Employee object. Throws 400 BAD_REQUEST, if payload is malformed.
+     * Throws 500 INTERNAL_SERVER_ERROR, if request can not be processed.
+     *
+     * @param employee Employee JSON payload
+     * @return 201 and new Employee object
+     */
     @PostMapping
     public ResponseEntity<?> addUpdateEmployee(@Valid @RequestBody Employee employee) {
         boolean existsByEmail = employeeService.existsByEmail(employee.getEmail());
@@ -55,6 +76,13 @@ public class EmployeeController {
         return new ResponseEntity<>(saveEmployee, HttpStatus.CREATED);
     }
 
+    /**
+     * Handles the request to delete an employee object from the repository.
+     * Throws 404 NOT_FOUND, if Employee object is not in the repository.
+     *
+     * @param id String
+     * @return 204 No content
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEmployeeById(@PathVariable String id) {
         if (!employeeService.existsById(id)) {

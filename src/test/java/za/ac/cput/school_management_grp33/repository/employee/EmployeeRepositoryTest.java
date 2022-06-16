@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import za.ac.cput.school_management_grp33.domain.employee.Employee;
 import za.ac.cput.school_management_grp33.domain.lookup.Name;
 import za.ac.cput.school_management_grp33.factory.employee.EmployeeFactory;
+import za.ac.cput.school_management_grp33.factory.lookup.NameFactory;
 
 import java.util.List;
 
@@ -26,7 +27,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 class EmployeeRepositoryTest {
 
-    private final Employee employee = EmployeeFactory.build("100", "joe13@email.com", new Name());
+    private final Name name = NameFactory.build("Joeless", "Thirteen", "Roy");
+    private final Employee employee = EmployeeFactory.build("100", "joe13@email.com", name);
     @Autowired
     private EmployeeRepository employeeRepository;
 

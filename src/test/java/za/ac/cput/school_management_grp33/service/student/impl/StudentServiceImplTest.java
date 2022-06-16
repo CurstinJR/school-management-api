@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import za.ac.cput.school_management_grp33.domain.lookup.Name;
 import za.ac.cput.school_management_grp33.domain.student.Student;
+import za.ac.cput.school_management_grp33.factory.lookup.NameFactory;
 import za.ac.cput.school_management_grp33.factory.student.StudentFactory;
 import za.ac.cput.school_management_grp33.repository.student.StudentRepository;
 
@@ -37,6 +38,8 @@ class StudentServiceImplTest {
     @InjectMocks
     private StudentServiceImpl studentService;
 
+    private Name name1;
+    private Name name2;
     private Student student1;
     private Student student2;
     private List<Student> students;
@@ -44,8 +47,10 @@ class StudentServiceImplTest {
     @BeforeEach
     void setUp() {
         students = new ArrayList<>();
-        student1 = StudentFactory.build("100", "joey13@email.com", new Name());
-        student2 = StudentFactory.build("101", "jack14@email.com", new Name());
+        name1 = NameFactory.build("JoeSo", "Thirteen", "Roy");
+        name2 = NameFactory.build("JackGo", "Fourteen", "Soy");
+        student1 = StudentFactory.build("100", "joeySo13@email.com", name1);
+        student2 = StudentFactory.build("101", "jackGo14@email.com", name2);
         students.add(student1);
         students.add(student2);
     }
@@ -95,14 +100,14 @@ class StudentServiceImplTest {
         assertNotNull(saveStudent);
         assertAll(
                 () -> assertEquals("100", saveStudent.getStudentId()),
-                () -> assertEquals("joey13@email.com", saveStudent.getEmail())
+                () -> assertEquals("joeySo13@email.com", saveStudent.getEmail())
         );
     }
 
     @Test
     void findStudentByEmail() {
         // given - stubbing - providing knowledge
-        String email = "jack14@email.com";
+        String email = "jackGo14@email.com";
         given(studentRepository.findStudentByEmail(email)).willReturn(Optional.of(student2));
         // when - action to be tested
         Student existStudent = studentService.findStudentByEmail(student2.getEmail()).get();
