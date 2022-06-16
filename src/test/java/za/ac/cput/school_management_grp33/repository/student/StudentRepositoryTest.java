@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import za.ac.cput.school_management_grp33.domain.lookup.Name;
 import za.ac.cput.school_management_grp33.domain.student.Student;
+import za.ac.cput.school_management_grp33.factory.lookup.NameFactory;
 import za.ac.cput.school_management_grp33.factory.student.StudentFactory;
 
 import java.util.List;
@@ -26,7 +27,8 @@ import static org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 class StudentRepositoryTest {
 
-    private final Student student = StudentFactory.build("100", "joe13@email.com", new Name());
+    private final Name name = NameFactory.build("Joeless", "Thirteen", "Roy");
+    private final Student student = StudentFactory.build("100", "joe13@email.com", name);
     @Autowired
     private StudentRepository studentRepository;
 

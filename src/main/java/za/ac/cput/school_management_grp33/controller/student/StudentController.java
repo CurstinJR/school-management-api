@@ -31,12 +31,25 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    /**
+     * Handles the request to retrieve all student and return an array of
+     * student objects.
+     *
+     * @return List of student objects
+     */
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
         List<Student> students = studentService.findAll();
         return ResponseEntity.ok(students);
     }
 
+    /**
+     * Handles the request to retrieve a specific Student object by providing
+     * an ID. Throws 404 NOT_FOUND, if Student object is not in the repository.
+     *
+     * @param id String
+     * @return 200 and Student object SUCCESS
+     */
     @GetMapping("/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable String id) {
         String notFoundMessage = String.format(STUDENT_WITH_ID_NOT_FOUND_MSG, id);
@@ -45,6 +58,14 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
+    /**
+     * Handles the request to create a new Student object or update an existing
+     * Student object. Throws 400 BAD_REQUEST, if payload is malformed.
+     * Throws 500 INTERNAL_SERVER_ERROR, if request can not be processed.
+     *
+     * @param student Student JSON payload
+     * @return 201 and new Student object
+     */
     @PostMapping
     public ResponseEntity<?> addUpdateStudent(@Valid @RequestBody Student student) {
         boolean existsByEmail = studentService.existsByEmail(student.getEmail());
@@ -56,6 +77,13 @@ public class StudentController {
         return new ResponseEntity<>(saveStudent, HttpStatus.CREATED);
     }
 
+    /**
+     * Handles the request to delete a Student object from the repository.
+     * Throws 404 NOT_FOUND, if Student object is not in the repository.
+     *
+     * @param id String
+     * @return 204 No content
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteStudentById(@PathVariable String id) {
         if (!studentService.existsById(id)) {
