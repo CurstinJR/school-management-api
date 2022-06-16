@@ -19,7 +19,6 @@ public class Address {
 
     private String unitNumber;
     private String complexName;
-    private String complexNumber;
     private String streetNumber;
     private String streetName;
     private int postalCode;
