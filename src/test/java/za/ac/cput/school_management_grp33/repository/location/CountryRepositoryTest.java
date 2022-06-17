@@ -40,7 +40,7 @@ class CountryRepositoryTest {
     @Order(2)
     void findAll() {
         List<Country> countries = countryRepository.findAll();
-        assertFalse(countries.size() >= 3);
+        assertTrue(countries.size() >= 1);
     }
 
     @Test
