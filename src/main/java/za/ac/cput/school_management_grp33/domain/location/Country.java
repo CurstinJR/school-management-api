@@ -5,6 +5,7 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
@@ -19,6 +20,7 @@ Date: 14 March 2022
 @Setter
 @ToString
 @Entity
+@Table(name = "countries")
 public class Country {
    @Id
     @NotNull private String id;

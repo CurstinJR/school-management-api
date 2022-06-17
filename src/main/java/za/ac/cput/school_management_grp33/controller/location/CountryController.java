@@ -14,31 +14,32 @@ import java.util.List;
 @RequestMapping("/api/countries")
 public class CountryController {
     public static final String COUNTRY_WITH_ID_NOT_FOUND_MSG =  "Country with id: %s not found";
-    private final CountryServiceImpl service;
+    private final CountryServiceImpl countryService;
 
     @Autowired
-    public CountryController(CountryServiceImpl service){
-        this.service = service;
+    public CountryController(CountryServiceImpl countryService){
+        this.countryService = countryService;
     }
 
     @GetMapping
     public ResponseEntity<List<Country>> getAllCountries(){
-        List<Country> countries = service.findAll();
+        List<Country> countries = countryService.findAll();
         return ResponseEntity.ok(countries);
     }
     @GetMapping("/{id}")
     public ResponseEntity<?> getCountryId(@PathVariable String id){
-        String notFound = String.format(COUNTRY_WITH_ID_NOT_FOUND_MSG, id);
-        Country country = service.findById(id).orElseThrow(() -> new ResourceNotFoundException(notFound));
+        String notFoundMessage = String.format(COUNTRY_WITH_ID_NOT_FOUND_MSG, id);
+        Country country = countryService.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(notFoundMessage));
         return ResponseEntity.ok(country);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCountryId(@PathVariable String id){
-        if (service.findById(id).isEmpty()) {
+        if (countryService.findById(id).isEmpty()) {
             String notFoundMessage = String.format(COUNTRY_WITH_ID_NOT_FOUND_MSG, id);
             throw new ResourceNotFoundException(notFoundMessage);
         }
-        service.deleteById(id);
+        countryService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
