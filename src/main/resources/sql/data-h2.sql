@@ -8,3 +8,6 @@ VALUES ('1', 'joe@email.edu', 'Joey', 'Knight', 'Summer'),
        ('2', 'max@email.edu', 'Maxy', 'Queen', 'Winter'),
        ('3', 'ethan@email.edu', 'Ethan', 'Prince', 'Fay');
 
+INSERT INTO countries(`id`, `name`)
+VALUES ('1', 'South-Africa'),
+       ('2', 'Kenya');

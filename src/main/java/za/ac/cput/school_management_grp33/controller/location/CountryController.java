@@ -2,12 +2,16 @@ package za.ac.cput.school_management_grp33.controller.location;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import za.ac.cput.school_management_grp33.domain.employee.Employee;
 import za.ac.cput.school_management_grp33.domain.location.Country;
+import za.ac.cput.school_management_grp33.exception.EmailExistsException;
 import za.ac.cput.school_management_grp33.exception.ResourceNotFoundException;
 import za.ac.cput.school_management_grp33.service.location.impl.CountryServiceImpl;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -41,6 +45,11 @@ public class CountryController {
         }
         countryService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping
+    public ResponseEntity<?> addUpdateEmployee(@Valid @RequestBody Country country) {
+        Country newCountry = countryService.save(country);
+        return new ResponseEntity<>(newCountry, HttpStatus.CREATED);
     }
 
 }
