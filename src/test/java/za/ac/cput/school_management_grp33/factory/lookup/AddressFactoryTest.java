@@ -15,7 +15,7 @@ class AddressFactoryTest {
     @Test
     void testingAddressOne() {
         Address address = AddressFactory.build("500", "Thelighter", "15",
-                "95", 100,new City());
+                "95", 100, new City());
         assertFalse(1000 <= address.getPostalCode() && address.getPostalCode() <= 9999);
     }
 

@@ -19,11 +19,12 @@ public class AddressFactory {
         StringUtility.setEmptyIfNull(complexName);
         StringUtility.checkStringParam("streetNumber", streetNumber);
         StringUtility.checkStringParam("streetName", streetName);
-        Utils.checkRangeNum(postalCode, 1000, 9000);
+        Utils.checkRangeNum(postalCode, 1000, 9999);
 
         return Address.builder().unitNumber(unitNumber).complexName(complexName)
                 .streetNumber(streetNumber)
                 .streetName(streetName)
+                .postalCode(postalCode)
                 .city(city).build();
 
     }
