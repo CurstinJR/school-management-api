@@ -1,3 +1,7 @@
+/*
+Author: Kevin Lionel Mombo Ndinga (218180500)
+AddressFactoryTest.java
+ */
 package za.ac.cput.school_management_grp33.factory.lookup;
 
 import org.junit.jupiter.api.Test;
@@ -6,10 +10,6 @@ import za.ac.cput.school_management_grp33.domain.lookup.Address;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-/*
-Author: Kevin Lionel Mombo Ndinga (218180500)
-AddressFactoryTest.java
- */
 class AddressFactoryTest {
 
     @Test
