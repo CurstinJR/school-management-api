@@ -7,4 +7,3 @@ INSERT INTO employees(`staff_id`, `email`, `first_name`, `middle_name`, `last_na
 VALUES ('1', 'joe@email.edu', 'Joey', 'Knight', 'Summer'),
        ('2', 'max@email.edu', 'Maxy', 'Queen', 'Winter'),
        ('3', 'ethan@email.edu', 'Ethan', 'Prince', 'Fay');
-
