@@ -6,7 +6,7 @@ import za.ac.cput.school_management_grp33.domain.location.Country;
 import static org.junit.jupiter.api.Assertions.*;
 
 /*
-CountryFactory.java
+CountryFactoryTest.java
 Author: Tarren-Marc Adams - 214041794
 Date: 15 March 2022
  */
