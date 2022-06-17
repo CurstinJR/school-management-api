@@ -6,6 +6,6 @@ import za.ac.cput.school_management_grp33.service.IService;
 
 import java.util.List;
 
-public interface CityService extends IService<City,String> {
+public interface CityService extends IService<City, String> {
     List<Employee> getEmployeesLiving(String cityId);
 }

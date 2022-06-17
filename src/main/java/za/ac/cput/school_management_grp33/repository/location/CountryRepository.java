@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.school_management_grp33.domain.location.Country;
 
 @Repository
-public interface CountryRepository extends JpaRepository<Country,String> {
+public interface CountryRepository extends JpaRepository<Country, String> {
 }

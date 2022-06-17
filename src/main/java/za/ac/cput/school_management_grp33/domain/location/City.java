@@ -1,9 +1,11 @@
 package za.ac.cput.school_management_grp33.domain.location;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Builder
@@ -16,6 +18,6 @@ public class City {
     private String id;
     private String name;
     @ManyToOne(optional = false)
-    @JoinColumn(name="contryId")
+    @JoinColumn(name = "contryId")
     private Country country;
 }

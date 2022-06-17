@@ -8,17 +8,17 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
 import za.ac.cput.school_management_grp33.domain.location.City;
 import za.ac.cput.school_management_grp33.domain.location.Country;
-import za.ac.cput.school_management_grp33.factory.location.CountryFactory;
 import za.ac.cput.school_management_grp33.factory.lookup.CityFactory;
 import za.ac.cput.school_management_grp33.repository.location.CountryRepository;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -29,6 +29,7 @@ class CityServiceImplTest {
     private CityServiceImpl service;
     @Autowired
     private CountryRepository countryRepository;
+
     @Test
     void getCityService() {
     }
@@ -38,7 +39,7 @@ class CityServiceImplTest {
         Country country = Country.builder().name("Tanzania").id("1234").build();
         Country country1 = countryRepository.save(country);
         System.out.println(country1);
-        City city = CityFactory.getCity("1230","Brazaville", country);
+        City city = CityFactory.getCity("1230", "Brazaville", country);
         City city1 = service.save(city);
         assertNotNull(city1);
     }
