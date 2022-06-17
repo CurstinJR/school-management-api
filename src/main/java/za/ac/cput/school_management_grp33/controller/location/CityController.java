@@ -14,8 +14,13 @@ import java.util.List;
 @RequestMapping("/api/cities/")
 public class CityController {
     public static final String CITY_WITH_ID_NOT_FOUND_MSG = "City with id: %s not found";
+
+    private final CityServiceImpl cityService;
+
     @Autowired
-    private CityServiceImpl cityService;
+    public CityController(CityServiceImpl cityService) {
+        this.cityService = cityService;
+    }
 
     @PostMapping
     public ResponseEntity<?> createUpdate(@RequestBody City city) {

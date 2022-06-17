@@ -2,7 +2,6 @@ package za.ac.cput.school_management_grp33.service.location.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import za.ac.cput.school_management_grp33.domain.employee.Employee;
 import za.ac.cput.school_management_grp33.domain.location.City;
 import za.ac.cput.school_management_grp33.repository.location.CityRepository;
 import za.ac.cput.school_management_grp33.service.location.CityService;
@@ -12,19 +11,12 @@ import java.util.Optional;
 
 @Service
 public class CityServiceImpl implements CityService {
-    private static CityServiceImpl cityService = null;
+
+    private final CityRepository repository;
+
     @Autowired
-    private CityRepository repository;
-
-    private CityServiceImpl() {
-
-    }
-
-    public static CityServiceImpl getCityService() {
-        if (cityService == null) {
-            cityService = new CityServiceImpl();
-        }
-        return cityService;
+    public CityServiceImpl(CityRepository repository) {
+        this.repository = repository;
     }
 
     @Override
@@ -45,10 +37,5 @@ public class CityServiceImpl implements CityService {
     @Override
     public void deleteById(String s) {
         repository.deleteById(s);
-    }
-
-    @Override
-    public List<Employee> getEmployeesLiving(String cityId) {
-        return null;
     }
 }

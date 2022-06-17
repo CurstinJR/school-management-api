@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import za.ac.cput.school_management_grp33.domain.location.City;
 import za.ac.cput.school_management_grp33.domain.location.Country;
 import za.ac.cput.school_management_grp33.factory.location.CountryFactory;
-import za.ac.cput.school_management_grp33.factory.lookup.CityFactory;
+import za.ac.cput.school_management_grp33.factory.location.CityFactory;
 import za.ac.cput.school_management_grp33.repository.location.CountryRepository;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
