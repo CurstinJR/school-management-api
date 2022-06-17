@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import za.ac.cput.school_management_grp33.domain.employee.Employee;
 import za.ac.cput.school_management_grp33.domain.lookup.Name;
 import za.ac.cput.school_management_grp33.factory.employee.EmployeeFactory;
+import za.ac.cput.school_management_grp33.factory.lookup.NameFactory;
 import za.ac.cput.school_management_grp33.repository.employee.EmployeeRepository;
 
 import java.util.ArrayList;
@@ -37,6 +38,8 @@ class EmployeeServiceImplTest {
     @InjectMocks
     private EmployeeServiceImpl employeeService;
 
+    private Name name1;
+    private Name name2;
     private Employee employee1;
     private Employee employee2;
     private List<Employee> employees;
@@ -44,8 +47,10 @@ class EmployeeServiceImplTest {
     @BeforeEach
     void setUp() {
         employees = new ArrayList<>();
-        employee1 = EmployeeFactory.build("200", "joeySo13@email.com", new Name());
-        employee2 = EmployeeFactory.build("201", "jackGo14@email.com", new Name());
+        name1 = NameFactory.build("JoeSo", "Thirteen", "Roy");
+        name2 = NameFactory.build("JackGo", "Fourteen", "Soy");
+        employee1 = EmployeeFactory.build("200", "joeySo13@email.com", name1);
+        employee2 = EmployeeFactory.build("201", "jackGo14@email.com", name2);
         employees.add(employee1);
         employees.add(employee2);
     }
