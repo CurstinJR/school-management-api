@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -56,17 +55,6 @@ class StudentAddressServiceImplTest {
         studentAddress1 = null;
         studentAddress2 = null;
         studentAddresses = null;
-    }
-
-    @Test
-    void save() {
-        // given - stubbing - providing knowledge
-        given(studentAddressRepository.save(any(StudentAddress.class))).willReturn(studentAddress1);
-        // when - action to be tested
-        StudentAddress saveStudentAddress = studentAddressService.save(studentAddress1);
-        // then - verify
-        verify(studentAddressRepository, times(1)).save(any(StudentAddress.class));
-        assertNotNull(saveStudentAddress);
     }
 
     @Test

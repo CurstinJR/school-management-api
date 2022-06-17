@@ -36,6 +36,7 @@ public class Student {
     private String email;
 
     @Embedded
+    @NotNull(message = "{validation.field.Name.mandatory}")
     private Name name;
 
     @Override

@@ -1,3 +1,7 @@
+/*
+Author: Kevin Lionel Mombo Ndinga (218180500)
+StudentAddressController.java;
+ */
 package za.ac.cput.school_management_grp33.controller.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +15,11 @@ import za.ac.cput.school_management_grp33.service.student.impl.StudentAddressSer
 import javax.validation.Valid;
 import java.util.List;
 
-/*
-Author: Kevin Lionel Mombo Ndinga (218180500)
-StudentAddressController.java;
- */
 @RestController
 @RequestMapping("/api/students")
 public class StudentAddressController {
-    public static final String STUDENTADDRESS_WITH_ID_NOT_FOUND_MSG = "Student address with: %s id not found";
-    public static final String STUDENTADDRESS_WITH_ADDRESS_NOT_FOUND_MSG = "Student address with: %s address not found";
-    public static final String STUDENTADDRESS_ADDRESS_EXISTS_MSG = "Student address exists: %s";
+
+    public static final String STUDENT_ADDRESS_WITH_ID_NOT_FOUND_MSG = "Student address with: %s id not found";
 
     private final StudentAddressServiceImpl studentAddressService;
 
@@ -37,7 +36,7 @@ public class StudentAddressController {
 
     @GetMapping("/{id}/address")
     public ResponseEntity<?> getStudentAddressById(@PathVariable String id) {
-        String notFoundMessage = String.format(STUDENTADDRESS_WITH_ID_NOT_FOUND_MSG, id);
+        String notFoundMessage = String.format(STUDENT_ADDRESS_WITH_ID_NOT_FOUND_MSG, id);
         StudentAddress studentAddress = studentAddressService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(notFoundMessage));
         return ResponseEntity.ok(studentAddress);

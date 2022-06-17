@@ -12,22 +12,8 @@ class NameFactoryTest {
 
     @Test
     void buildNullValues() {
-
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
-            NameFactory.build("Kevin", null, "Mombo")
-
-        );
-        String expectedMessage = "Invalid value for param:";
-        String actualMessage = exception.getMessage();
-        assertTrue(actualMessage.contains(expectedMessage));
-    }
-
-    @Test
-    void buildworks() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () ->
-            NameFactory.build("Kevin", null, "Mombo")
-
-        );
+                NameFactory.build(null, "KevinMombo", null));
         String expectedMessage = "Invalid value for param:";
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
