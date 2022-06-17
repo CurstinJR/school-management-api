@@ -7,8 +7,13 @@ Date: 15 March 2022
 
 import za.ac.cput.school_management_grp33.domain.location.Country;
 import za.ac.cput.school_management_grp33.util.StringUtility;
+
+import za.ac.cput.school_management_grp33.domain.location.Country;
+import za.ac.cput.school_management_grp33.util.StringUtility;
 public class CountryFactory {
+
     public static Country build(String id, String name){
+    public static Country build(String id, String name) {
         StringUtility.checkStringParam("id", id);
         StringUtility.checkStringParam("name", name);
         return Country.builder()

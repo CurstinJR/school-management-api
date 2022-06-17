@@ -6,6 +6,7 @@ import org.hibernate.Hibernate;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
@@ -37,7 +38,5 @@ public class Country {
     }
     public int hashCode()
     {
-        return getClass().hashCode();
-    }
 
 }

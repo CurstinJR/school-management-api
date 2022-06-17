@@ -5,6 +5,7 @@ import za.ac.cput.school_management_grp33.domain.location.Country;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 /*
 CountryFactoryTest.java
 Author: Tarren-Marc Adams - 214041794
@@ -12,15 +13,16 @@ Date: 15 March 2022
  */
 class CountryFactoryTest {
     @Test
-    void buildNonNullValues(){
+    void buildNonNullValues() {
         Country country = CountryFactory.build("1", "South-Africa");
         String id = country.getId();
         String name = country.getName();
         assertEquals("1", id);
         assertEquals("South-Africa", name);
     }
+
     @Test
-    void buildNullValues1(){
+    void buildNullValues1() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             CountryFactory.build(null, null);
         });
@@ -28,8 +30,9 @@ class CountryFactoryTest {
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
     }
+
     @Test
-    void buildNullValues2(){
+    void buildNullValues2() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             CountryFactory.build("1", null);
         });
