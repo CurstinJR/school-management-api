@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Test;
 import za.ac.cput.school_management_grp33.domain.lookup.Name;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*
+Author:Kevin Lionel Mombo Ndinga (218180500)
+NameFactoryTest.java;
+ */
 class NameFactoryTest {
 
     @Test
