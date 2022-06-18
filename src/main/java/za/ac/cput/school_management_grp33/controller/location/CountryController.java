@@ -1,10 +1,10 @@
-package za.ac.cput.school_management_grp33.controller.location;
-
 /*
 CountryController.java
 Author: Tarren-Marc Adams - 214041794
 Date: 17 March 2022
  */
+package za.ac.cput.school_management_grp33.controller.location;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class CountryController {
     private final CountryServiceImpl countryService;
 
     @Autowired
-    public CountryController(CountryServiceImpl countryService){
+    public CountryController(CountryServiceImpl countryService) {
         this.countryService = countryService;
     }
 
@@ -33,6 +33,7 @@ public class CountryController {
         List<Country> countries = countryService.findAll();
         return ResponseEntity.ok(countries);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getCountryId(@PathVariable String id){
         String notFoundMessage = String.format(COUNTRY_WITH_ID_NOT_FOUND_MSG, id);
@@ -40,6 +41,7 @@ public class CountryController {
                 .orElseThrow(() -> new ResourceNotFoundException(notFoundMessage));
         return ResponseEntity.ok(country);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCountryId(@PathVariable String id){
         if (countryService.findById(id).isEmpty()) {
@@ -49,6 +51,7 @@ public class CountryController {
         countryService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
     @PostMapping
     public ResponseEntity<?> addUpdateEmployee(@Valid @RequestBody Country country) {
         Country newCountry = countryService.save(country);

@@ -5,6 +5,7 @@
  */
 package za.ac.cput.school_management_grp33.domain.student;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sanctionco.jmail.JMail;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -27,7 +28,7 @@ public class Student {
 
     @Id
     @NotNull(message = "{validation.field.studentId.mandatory}")
-    @Column(nullable = false)
+    @Column(name = "student_id", nullable = false, unique = true)
     private String studentId;
 
     @NotNull(message = "{validation.field.email.mandatory}")
@@ -38,6 +39,11 @@ public class Student {
     @Embedded
     @NotNull(message = "{validation.field.Name.mandatory}")
     private Name name;
+
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    @Transient
+    @JsonIgnore
+    private StudentAddress studentAddress;
 
     @Override
     public boolean equals(Object o) {

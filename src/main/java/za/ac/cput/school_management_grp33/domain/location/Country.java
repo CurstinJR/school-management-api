@@ -1,3 +1,7 @@
+/*
+Author: Tarren-Marc Adams - 214041794
+Date: 14 March 2022
+ */
 package za.ac.cput.school_management_grp33.domain.location;
 
 import lombok.*;
@@ -5,20 +9,18 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-/*
-Author: Tarren-Marc Adams - 214041794
-Date: 14 March 2022
- */
+@Entity
+@Table(name = "countries")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Setter
 @ToString
-@Entity
 public class Country {
     @Id
     @NotNull
@@ -37,5 +39,4 @@ public class Country {
     public int hashCode() {
         return getClass().hashCode();
     }
-
 }

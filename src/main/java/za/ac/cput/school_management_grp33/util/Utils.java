@@ -30,10 +30,12 @@ public final class Utils {
     }
 
     public static int checkRangeNum(int value, int lowerBound, int upperBound) {
-        if (value >= lowerBound && value <= upperBound) {
-            log.info("The num is within the range " + value);
-        } else {
-            log.info("The num is out of the range");
+        if (!(value >= lowerBound && value <= upperBound)) {
+            String error = String.format("Postal code %d is invalid. Please provide a postal code between %d and %d.",
+                    value, lowerBound, upperBound);
+            IllegalArgumentException exception = new IllegalArgumentException(error);
+            log.info(exception.getMessage());
+            throw exception;
         }
         return value;
     }
