@@ -1,25 +1,37 @@
+/**
+ * @Author CHANTAL NIYONZIMA
+ * 217267815
+ * 14 June 2022
+ * EmployeeAddressController.java
+ */
 package za.ac.cput.school_management_grp33.domain.location;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+
 @Entity
+@Table(name = "cities")
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @ToString
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class City {
+
     @Id
+    @Column(name = "city_id", nullable = false)
     private String id;
     private String name;
-    @ManyToOne(optional = false)
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id")
+    @NotNull(message = "{validation.field.Country.mandatory}")
+    @ToString.Exclude
     private Country country;
 
     @Override

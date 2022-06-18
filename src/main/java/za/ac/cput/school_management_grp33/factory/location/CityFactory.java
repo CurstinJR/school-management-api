@@ -1,3 +1,9 @@
+/**
+ * @Author CHANTAL NIYONZIMA
+ * 217267815
+ * 14 June 2022
+ * EmployeeAddressController.java
+ */
 package za.ac.cput.school_management_grp33.factory.location;
 
 import za.ac.cput.school_management_grp33.domain.location.City;
@@ -12,6 +18,7 @@ public class CityFactory {
         return City.builder()
                 .id(id)
                 .name(name)
-                .country(country).build();
+                .country(country)
+                .build();
     }
 }
