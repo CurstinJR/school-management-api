@@ -1,10 +1,9 @@
-package za.ac.cput.school_management_grp33.controller.location;
-
 /*
 CountryControllerTest.java
 Author: Tarren-Marc Adams - 214041794
 Date: 17 March 2022
  */
+package za.ac.cput.school_management_grp33.controller.location;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CountryControllerTest {
+
     @LocalServerPort
     private int PORT;
     private String BASE_URL;
@@ -67,6 +67,7 @@ class CountryControllerTest {
     }
 
     @Test
+    @Order(4)
     void deleteStudentId() {
         String id = "12";
         ResponseEntity<Void> response = restTemplate.exchange(BASE_URL + id,
@@ -78,5 +79,4 @@ class CountryControllerTest {
                 () -> assertNull(response.getBody())
         );
     }
-
 }
