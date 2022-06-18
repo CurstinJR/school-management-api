@@ -65,6 +65,12 @@ class CityServiceImplTest {
     }
 
     @Test
+    void findCitiesByCountry_IdOrderByName(){
+        List<City> city = service.findCitiesByCountry_IdOrderByName("1");
+        assertNotNull(city);
+    }
+
+    @Test
     void deleteById() {
         service.deleteById("1230");
         City city = service.findById("").orElse(null);

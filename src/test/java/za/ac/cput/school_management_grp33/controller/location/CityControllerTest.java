@@ -66,6 +66,13 @@ class CityControllerTest {
     }
 
     @Test
+    void getCitiesByCountryId(){
+
+
+    }
+
+
+    @Test
     void delete() {
         restTemplate.delete(baseUrl + cityObject.getId(), String.class);
         ResponseEntity<City> response = restTemplate.getForEntity(baseUrl + cityObject.getId(), City.class);
