@@ -1,3 +1,8 @@
+/**
+ * @Author Curstin Rose - 220275408
+ * StudentControllerTest.java
+ * Created on 14 June 2022
+ */
 package za.ac.cput.school_management_grp33.controller.student;
 
 import org.junit.jupiter.api.*;

@@ -1,7 +1,7 @@
 package za.ac.cput.school_management_grp33.service.location.impl;
 
 /*
-CountryRepositoryTest.java
+CountryServiceImplTest.java
 Author: Tarren-Marc Adams - 214041794
 Date: 17 March 2022
  */

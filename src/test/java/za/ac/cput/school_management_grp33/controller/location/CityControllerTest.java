@@ -2,7 +2,7 @@
  * @Author CHANTAL NIYONZIMA
  * 217267815
  * 14 June 2022
- * EmployeeAddressController.java
+ * CityControllerTest.java
  */
 package za.ac.cput.school_management_grp33.controller.location;
 
