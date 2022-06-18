@@ -1,58 +1,51 @@
 /**
  * @Author Ngonidzaishe Erica Chipato
  * 218327315
- * 14 June 2022
- * StudentAddress.java
+ * 15 June 2022
+ * EmployeeAddressFactory.java
  */
-
-
-
 package za.ac.cput.school_management_grp33.domain.student;
 
-
-import za.ac.cput.school_management_grp33.domain.lookup.Address;
 import lombok.*;
 import org.hibernate.Hibernate;
-
+import za.ac.cput.school_management_grp33.domain.lookup.Address;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Table(name = "student_address")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
-
-public class StudentAddress {
+public class StudentAddress implements Serializable {
 
     @Id
-    @NotNull
-    @Column(nullable = false)
-    private String studentId;
+    @Column(name = "student_id")
+    private String id;
 
-    @Id
-    @NotNull
-    @Column(nullable = false)
+    @Embedded
     private Address address;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "student_id")
+    private Student student;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         StudentAddress studentAddress = (StudentAddress) o;
-        return studentId != null && Objects.equals(studentId, studentAddress.studentId);
+        return id != null && Objects.equals(id, studentAddress.id);
     }
 
     @Override
     public int hashCode() {
         return getClass().hashCode();
-
-
     }
-
 }

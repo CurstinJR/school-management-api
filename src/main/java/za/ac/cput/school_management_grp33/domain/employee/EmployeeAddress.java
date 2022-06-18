@@ -4,14 +4,16 @@
  * 14 June 2022
  * EmployeeAddress.java
  */
-
 package za.ac.cput.school_management_grp33.domain.employee;
+
 import lombok.*;
-import za.ac.cput.school_management_grp33.domain.lookup.Address;
 import org.hibernate.Hibernate;
+import za.ac.cput.school_management_grp33.domain.lookup.Address;
 
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
@@ -22,9 +24,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
-
-
 public class EmployeeAddress {
 
     @Id
@@ -32,7 +31,7 @@ public class EmployeeAddress {
     @Column(nullable = false)
     private String staffId;
 
-    @Id
+    @Embedded
     @NotNull
     @Column(nullable = false)
     private Address address;

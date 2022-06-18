@@ -1,3 +1,9 @@
+/**
+ * @Author CHANTAL NIYONZIMA
+ * 217267815
+ * 14 June 2022
+ * EmployeeAddressController.java
+ */
 package za.ac.cput.school_management_grp33.service.location.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +36,12 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public Optional<City> findById(String s) {
-        return repository.findById(s);
+    public Optional<City> findById(String id) {
+        return repository.findById(id);
     }
 
     @Override
-    public void deleteById(String s) {
-        repository.deleteById(s);
+    public void deleteById(String id) {
+        repository.deleteById(id);
     }
 }

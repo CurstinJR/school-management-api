@@ -3,9 +3,7 @@
  * 218327315
  * EmployeeAddressServiceImpl.java
  */
-
 package za.ac.cput.school_management_grp33.service.employee.impl;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +15,6 @@ import za.ac.cput.school_management_grp33.service.employee.EmployeeAddressServic
 
 import java.util.List;
 import java.util.Optional;
-
 
 @Service
 public class EmployeeAddressServiceImpl implements EmployeeAddressService {
@@ -56,14 +53,12 @@ public class EmployeeAddressServiceImpl implements EmployeeAddressService {
         return Optional.empty();
     }
 
-
     /**
      * Find by identifier
      *
      * @param staffId String
      * @return Non-null Employee Address
      */
-
     @Override
     public Optional<EmployeeAddress> findEmployeeAddressByStaffId(String staffId) {
         return employeeAddressRepository.findEmployeeAddressByStaffId(staffId);
@@ -76,17 +71,10 @@ public class EmployeeAddressServiceImpl implements EmployeeAddressService {
      * @param staffId
      * @return boolean
      */
-
     @Override
     public boolean existsByStaffId(String staffId) {
         return employeeAddressRepository.existsById(staffId);
     }
-
-    @Override
-    public boolean existsByAddress(Address address) {
-        return false;
-    }
-
 
     /**
      * Deletes employee address from repository
@@ -94,7 +82,6 @@ public class EmployeeAddressServiceImpl implements EmployeeAddressService {
      * @param staffId
      * @return boolean
      */
-
     @Override
     public void deleteById(String staffId) {
         employeeAddressRepository.deleteById(staffId);

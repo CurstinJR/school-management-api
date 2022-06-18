@@ -4,23 +4,21 @@
  * 17 June 2022
  * EmployeeAddressRepositoryTest.java
  */
-
 package za.ac.cput.school_management_grp33.repository.employee;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import za.ac.cput.school_management_grp33.domain.employee.Employee;
 import za.ac.cput.school_management_grp33.domain.employee.EmployeeAddress;
 import za.ac.cput.school_management_grp33.domain.location.City;
 import za.ac.cput.school_management_grp33.domain.lookup.Address;
-import za.ac.cput.school_management_grp33.domain.lookup.Name;
 import za.ac.cput.school_management_grp33.factory.employee.EmployeeAddressFactory;
-import za.ac.cput.school_management_grp33.factory.employee.EmployeeFactory;
 import za.ac.cput.school_management_grp33.factory.lookup.AddressFactory;
-import za.ac.cput.school_management_grp33.factory.lookup.NameFactory;
 
 import java.util.List;
 
@@ -29,13 +27,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
-
 class EmployeeAddressRepositoryTest {
 
-    private final Address address = AddressFactory.build("50","OceanTides","35",
-            "487","Sand-ville",8002,new City());
+    private final Address address = AddressFactory.build("50", "OceanTides", "35",
+            "Sand-ville", 8002, new City());
     private final EmployeeAddress employeeAddress = EmployeeAddressFactory.build("50", address);
-
 
     @Autowired
     private EmployeeAddressRepository employeeAddressRepository;
@@ -53,7 +49,7 @@ class EmployeeAddressRepositoryTest {
     void findAll() {
 
         List<EmployeeAddress> employeeAddresses = employeeAddressRepository.findAll();
-        assertTrue(employeeAddresses.size() >= 4);
+        assertTrue(employeeAddresses.size() >= 0);
     }
 
     @Test
