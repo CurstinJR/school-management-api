@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import za.ac.cput.school_management_grp33.api.EmployeeCityAPI;
 import za.ac.cput.school_management_grp33.domain.employee.Employee;
+import za.ac.cput.school_management_grp33.domain.lookup.Name;
 import za.ac.cput.school_management_grp33.exception.EmailExistsException;
 import za.ac.cput.school_management_grp33.exception.ResourceNotFoundException;
 import za.ac.cput.school_management_grp33.service.employee.impl.EmployeeServiceImpl;
@@ -24,10 +26,12 @@ public class EmployeeController {
     public static final String EMPLOYEE_WITH_ID_NOT_FOUND_MSG = "Employee with id: %s not found";
     public static final String EMPLOYEE_EMAIL_EXISTS_MSG = "Employee email exists: %s";
     private final EmployeeServiceImpl employeeService;
+    private final EmployeeCityAPI employeeCityAPI;
 
     @Autowired
-    public EmployeeController(EmployeeServiceImpl employeeService) {
+    public EmployeeController(EmployeeServiceImpl employeeService, EmployeeCityAPI employeeCityAPI) {
         this.employeeService = employeeService;
+        this.employeeCityAPI = employeeCityAPI;
     }
 
     /**
@@ -93,4 +97,16 @@ public class EmployeeController {
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * Question 6
+     *
+     * @param cityId String
+     * @return List of Employee Name objects
+     * @Author CHANTAL NIYONZIMA - 217267815
+     */
+    @GetMapping("city/{cityId}")
+    public ResponseEntity<?> findEmployeesByCityId(@PathVariable String cityId) {
+        List<Name> names = employeeCityAPI.getEmployeesInCity(cityId);
+        return ResponseEntity.ok(names);
+    }
 }

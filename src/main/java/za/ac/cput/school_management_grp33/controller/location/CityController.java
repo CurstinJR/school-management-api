@@ -17,8 +17,9 @@ import za.ac.cput.school_management_grp33.service.location.impl.CityServiceImpl;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/cities/")
+@RequestMapping("/api/cities")
 public class CityController {
+
     public static final String CITY_WITH_ID_NOT_FOUND_MSG = "City with id: %s not found";
 
     private final CityServiceImpl cityService;

@@ -35,7 +35,7 @@ class EmployeeAddressControllerTest {
 
     @BeforeEach
     void setUp() {
-        BASE_URL = "http://localhost:" + PORT + "/api/employees/address/";
+        BASE_URL = "http://localhost:" + PORT + "/api/employees/";
     }
 
     @Test
@@ -45,7 +45,7 @@ class EmployeeAddressControllerTest {
         Address address = AddressFactory.build("50", "OceanTides", "35",
                 "Sand-ville", 8002, city);
         EmployeeAddress employeeAddress = EmployeeAddressFactory.build("220789451", address);
-        ResponseEntity<EmployeeAddress> response = restTemplate.postForEntity(BASE_URL, employeeAddress,
+        ResponseEntity<EmployeeAddress> response = restTemplate.postForEntity(BASE_URL + "address", employeeAddress,
                 EmployeeAddress.class);
         assertAll(
                 () -> assertEquals(HttpStatus.CREATED, response.getStatusCode()),
@@ -57,7 +57,9 @@ class EmployeeAddressControllerTest {
     @Order(2)
     void getEmployeeAddressByStaffId() {
         String id = "220789451";
-        ResponseEntity<EmployeeAddress> response = restTemplate.getForEntity(BASE_URL + id, EmployeeAddress.class);
+        ResponseEntity<EmployeeAddress> response = restTemplate
+                .getForEntity(BASE_URL + id + "/address",
+                        EmployeeAddress.class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertNotNull(response.getBody())
@@ -67,10 +69,11 @@ class EmployeeAddressControllerTest {
     @Test
     @Order(3)
     void getAllEmployeesAddress() {
-        ResponseEntity<EmployeeAddress[]> response = restTemplate.getForEntity(BASE_URL, EmployeeAddress[].class);
+        ResponseEntity<EmployeeAddress[]> response = restTemplate
+                .getForEntity(BASE_URL + "address", EmployeeAddress[].class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
-                () -> assertEquals(1, response.getBody().length)
+                () -> assertTrue(response.getBody().length >= 3)
         );
     }
 
@@ -79,7 +82,7 @@ class EmployeeAddressControllerTest {
     @Order(4)
     void deleteEmployeeAddressById() {
         String id = "220789451";
-        ResponseEntity<Void> response = restTemplate.exchange(BASE_URL + id,
+        ResponseEntity<Void> response = restTemplate.exchange(BASE_URL + id + "/address",
                 HttpMethod.DELETE,
                 null,
                 Void.class);

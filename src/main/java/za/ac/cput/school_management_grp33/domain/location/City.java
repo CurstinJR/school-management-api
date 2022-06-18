@@ -24,14 +24,13 @@ import java.util.Objects;
 public class City {
 
     @Id
-    @Column(name = "city_id", nullable = false)
+    @Column(nullable = false)
     private String id;
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id")
     @NotNull(message = "{validation.field.Country.mandatory}")
-    @ToString.Exclude
     private Country country;
 
     @Override

@@ -10,14 +10,12 @@ import lombok.*;
 import org.hibernate.Hibernate;
 import za.ac.cput.school_management_grp33.domain.lookup.Address;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
+@Table(name = "employee_address")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -32,8 +30,6 @@ public class EmployeeAddress {
     private String staffId;
 
     @Embedded
-    @NotNull
-    @Column(nullable = false)
     private Address address;
 
     @Override

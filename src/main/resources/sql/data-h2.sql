@@ -13,7 +13,7 @@ VALUES ('1', 'Abkhazia'),
        ('2', 'Afghanistan'),
        ('3', 'Albania');
 
-INSERT INTO cities(`city_id`, `name`, `country_id`)
+INSERT INTO cities(`id`, `name`, `country_id`)
 VALUES ('1', 'Sukhumi', '1'),
        ('2', 'Kabul1', '2'),
        ('3', 'Tirana', '3'),
@@ -38,3 +38,8 @@ INSERT INTO student_address(`student_id`, `postal_code`)
 VALUES ('1', 6547),
        ('2', 1234),
        ('3', 9865);
+
+INSERT INTO employee_address(`staff_id`, `postal_code`, `city_id`)
+VALUES ('1', 8754, '1'),
+       ('2', 3578, '1'),
+       ('3', 1598, '2');
