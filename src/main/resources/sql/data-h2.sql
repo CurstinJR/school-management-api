@@ -38,4 +38,3 @@ INSERT INTO student_address(`student_id`, `postal_code`)
 VALUES ('1', 6547),
        ('2', 1234),
        ('3', 9865);
-

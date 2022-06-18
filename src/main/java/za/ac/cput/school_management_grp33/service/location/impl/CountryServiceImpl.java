@@ -1,8 +1,14 @@
+/*
+CountryServiceImp.java
+Author: Tarren-Marc Adams - 214041794
+Date: 16 March 2022
+ */
 package za.ac.cput.school_management_grp33.service.location.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.school_management_grp33.domain.location.Country;
+import za.ac.cput.school_management_grp33.factory.location.CountryFactory;
 import za.ac.cput.school_management_grp33.repository.location.CountryRepository;
 import za.ac.cput.school_management_grp33.service.location.CountryService;
 
@@ -20,8 +26,18 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Country save(Country country) {
-        return countryRepository.save(country);
+    public Country save(Country newCountry) {
+        String Id = newCountry.getId();
+        return findById(Id).map(country -> {
+            String id = country.getId();
+            String name = newCountry.getName();
+            country = CountryFactory.build(id, name);
+            return countryRepository.save(country);
+        }).orElseGet(() -> {
+            String id = newCountry.getId();
+            String name = newCountry.getName();
+            return countryRepository.save(CountryFactory.build(id, name));
+        });
     }
 
     @Override
@@ -36,6 +52,6 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public void deleteById(String id) {
-        countryRepository.findById(id);
+        countryRepository.deleteById(id);
     }
 }
