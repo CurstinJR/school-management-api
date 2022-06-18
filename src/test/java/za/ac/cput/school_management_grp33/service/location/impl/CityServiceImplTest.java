@@ -7,7 +7,6 @@
 package za.ac.cput.school_management_grp33.service.location.impl;
 
 import org.junit.FixMethodOrder;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -59,7 +58,7 @@ class CityServiceImplTest {
     }
 
     @Test
-    @Disabled
+        // @Disabled
     void deleteById() {
         service.deleteById("1230");
         City city = service.findById("1230").orElse(null);

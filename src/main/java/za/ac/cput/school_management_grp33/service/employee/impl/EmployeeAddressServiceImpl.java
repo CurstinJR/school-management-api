@@ -76,7 +76,7 @@ public class EmployeeAddressServiceImpl implements EmployeeAddressService {
         return employeeAddressRepository.existsById(staffId);
     }
 
-    public List<EmployeeAddress> getAllInCity(String cityId){
+    public List<EmployeeAddress> getAllInCity(String cityId) {
         return employeeAddressRepository.findAllByAddress_City_Id(cityId);
     }
 

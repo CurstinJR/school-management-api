@@ -83,11 +83,25 @@ class StudentAddressControllerTest {
                 5000,
                 city);
         StudentAddress studentAddress = StudentAddressFactory.build("4", address);
-        ResponseEntity<StudentAddress> response = restTemplate.postForEntity(BASE_URL + "/address",
+        ResponseEntity<StudentAddress> response = restTemplate.postForEntity(BASE_URL + "address",
                 studentAddress, StudentAddress.class);
         assertAll(
                 () -> assertEquals(HttpStatus.CREATED, response.getStatusCode()),
                 () -> assertNotNull(response.getBody())
         );
+    }
+
+    /**
+     * Question 9
+     *
+     * @Author Curstin Rose - 220275408
+     */
+    @Test
+    @Order(5)
+    void getStudentsInCountry() {
+        String id = "1";
+        ResponseEntity<String[]> lastNames = restTemplate
+                .getForEntity(BASE_URL + "address/country/" + id, String[].class);
+        assertTrue(lastNames.getBody().length >= 3);
     }
 }
