@@ -13,8 +13,15 @@ model is presented below.
 # Discussion
 
 ## Flaws
+- Students may share an address (UML depicts a one-to-one relationship)
+- Address should be an entity with an identifier, to be able to use a bridging entity to make data access easy.
+- All attributes have public access modifiers, data integrity identifiers (keys) should be protected or private.
+- Employee and Student share the same properties and could have been combined to produce a single entity.
+- Object nesting, Address has City and City has Country. This is problem when accessing data, it also does not conform to single responsibility.
 
 ## Improvements
+ - Specifying the endpoints to be designed and defining proper requirements. Such as whether a client should be able to add a City or Country to the address or choose from a selection.
+ - Similarly, EmployeeAddress or StudentAddress can be saved even though the relation Student or Employee do not exist.
 
 # Authors
 <table>
