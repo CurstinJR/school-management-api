@@ -10,6 +10,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import za.ac.cput.school_management_grp33.domain.location.City;
 
+import java.util.List;
+
 @Repository
 public interface CityRepository extends JpaRepository<City, String> {
+    //Question 7: Tarren-Marc Adams
+    List<City> findCitiesByCountry_IdOrderByName(String id);
 }

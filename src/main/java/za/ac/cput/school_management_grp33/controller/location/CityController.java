@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.school_management_grp33.domain.location.City;
+import za.ac.cput.school_management_grp33.domain.location.Country;
 import za.ac.cput.school_management_grp33.exception.ResourceNotFoundException;
 import za.ac.cput.school_management_grp33.service.location.impl.CityServiceImpl;
 
@@ -61,4 +62,12 @@ public class CityController {
     public List<City> readAll() {
         return cityService.findAll();
     }
+
+    //Question 7: Tarren-Marc adams
+    @GetMapping("/country/{id}")
+    public ResponseEntity<?> getCitiesByCountryId(@PathVariable String id){
+        List<City> citiesByCountryId = cityService.findCitiesByCountry_IdOrderByName(id);
+        return ResponseEntity.ok(citiesByCountryId);
+    }
+
 }
