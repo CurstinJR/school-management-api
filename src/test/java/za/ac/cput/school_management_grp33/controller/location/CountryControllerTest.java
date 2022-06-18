@@ -18,6 +18,7 @@ import za.ac.cput.school_management_grp33.domain.location.Country;
 import za.ac.cput.school_management_grp33.factory.location.CountryFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CountryControllerTest {
@@ -43,6 +44,7 @@ class CountryControllerTest {
                 () -> assertNotNull(response.getBody())
         );
     }
+
     @Test
     @Order(2)
     void getCountryId() {
@@ -60,7 +62,7 @@ class CountryControllerTest {
         ResponseEntity<Country[]> response = restTemplate.getForEntity(BASE_URL, Country[].class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
-                () -> assertEquals(1, response.getBody().length)
+                () -> assertEquals(4, response.getBody().length)
         );
     }
 

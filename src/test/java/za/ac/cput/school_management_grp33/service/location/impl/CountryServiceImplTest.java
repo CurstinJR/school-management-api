@@ -5,6 +5,7 @@ CountryRepositoryTest.java
 Author: Tarren-Marc Adams - 214041794
 Date: 17 March 2022
  */
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -49,7 +50,7 @@ class CountryServiceImplTest {
     @Order(3)
     void findById() {
         String id = country.getId();
-        Country exist =countryRepository.findById(id).orElseThrow();
+        Country exist = countryRepository.findById(id).orElseThrow();
         assertEquals(exist.getId(), country.getId());
     }
 

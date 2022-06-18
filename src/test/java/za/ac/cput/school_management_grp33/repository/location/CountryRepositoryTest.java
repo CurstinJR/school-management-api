@@ -47,7 +47,7 @@ class CountryRepositoryTest {
     @Order(3)
     void findById() {
         String id = country.getId();
-        Country exist =countryRepository.findById(id).orElseThrow();
+        Country exist = countryRepository.findById(id).orElseThrow();
         assertEquals(exist.getId(), country.getId());
     }
 
