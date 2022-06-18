@@ -44,4 +44,10 @@ public class CityServiceImpl implements CityService {
     public void deleteById(String id) {
         repository.deleteById(id);
     }
+
+    //Question7: Tarren-Marc Adams
+    @Override
+    public List<City> findCitiesByCountry_IdOrderByName(String id) {
+        return repository.findCitiesByCountry_IdOrderByName(id);
+    }
 }
