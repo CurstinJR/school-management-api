@@ -14,5 +14,6 @@ import java.util.Optional;
 
 public interface EmployeeAddressRepository extends JpaRepository<EmployeeAddress, String> {
     List<EmployeeAddress> findAllByAddress_City_Id(String cityId); //THis is need by CityService.
+
     Optional<EmployeeAddress> findEmployeeAddressByStaffId(String staffId);
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import za.ac.cput.school_management_grp33.api.StudentCountryAPI;
 import za.ac.cput.school_management_grp33.domain.student.StudentAddress;
 import za.ac.cput.school_management_grp33.exception.ResourceNotFoundException;
 import za.ac.cput.school_management_grp33.service.student.impl.StudentAddressServiceImpl;
@@ -23,9 +24,13 @@ public class StudentAddressController {
 
     private final StudentAddressServiceImpl studentAddressService;
 
+    private final StudentCountryAPI studentCountryAPI;
+
     @Autowired
-    public StudentAddressController(StudentAddressServiceImpl studentAddressService) {
+    public StudentAddressController(StudentAddressServiceImpl studentAddressService,
+                                    StudentCountryAPI studentCountryAPI) {
         this.studentAddressService = studentAddressService;
+        this.studentCountryAPI = studentCountryAPI;
     }
 
     @GetMapping("/address")
@@ -53,5 +58,18 @@ public class StudentAddressController {
     public ResponseEntity<?> deleteStudentAddressById(@PathVariable String id) {
         studentAddressService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    /**
+     * Question 9
+     *
+     * @param id String
+     * @return List of Student Last Names
+     * @Author Curstin Rose - 220275408
+     */
+    @GetMapping("/address/country/{id}")
+    public ResponseEntity<?> getStudentsInCountry(@PathVariable String id) {
+        List<String> studentsInCountry = studentCountryAPI.findStudentsInCountry(id);
+        return ResponseEntity.ok(studentsInCountry);
     }
 }

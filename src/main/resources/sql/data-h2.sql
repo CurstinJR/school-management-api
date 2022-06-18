@@ -34,10 +34,10 @@ VALUES ('1', 'Sukhumi', '1'),
 --        ('2', 'Shanghai Tower', 5478, 'Buckfast Street', '78', 'E.2'),
 --        ('3', 'Makkah Royal Clock Tower', 3956, 'Abbots Place', '45', 'N.W.6');
 
-INSERT INTO student_address(`student_id`, `postal_code`)
-VALUES ('1', 6547),
-       ('2', 1234),
-       ('3', 9865);
+INSERT INTO student_address(`student_id`, `postal_code`, `city_id`)
+VALUES ('1', 6547, '1'),
+       ('2', 1234, '1'),
+       ('3', 9865, '1');
 
 INSERT INTO employee_address(`staff_id`, `postal_code`, `city_id`)
 VALUES ('1', 8754, '1'),
