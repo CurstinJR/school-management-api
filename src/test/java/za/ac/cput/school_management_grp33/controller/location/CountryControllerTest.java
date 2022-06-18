@@ -37,7 +37,7 @@ class CountryControllerTest {
     @Test
     @Order(1)
     void addUpdateCountry() {
-        Country country = CountryFactory.build("12", "South-Africa");
+        Country country = CountryFactory.build("4", "South-Africa");
         ResponseEntity<Country> response = restTemplate.postForEntity(BASE_URL, country, Country.class);
         assertAll(
                 () -> assertEquals(HttpStatus.CREATED, response.getStatusCode()),
@@ -48,7 +48,7 @@ class CountryControllerTest {
     @Test
     @Order(2)
     void getCountryId() {
-        String id = "12";
+        String id = "4";
         ResponseEntity<Country> response = restTemplate.getForEntity(BASE_URL + id, Country.class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
@@ -62,14 +62,14 @@ class CountryControllerTest {
         ResponseEntity<Country[]> response = restTemplate.getForEntity(BASE_URL, Country[].class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
-                () -> assertEquals(4, response.getBody().length)
+                () -> assertTrue(response.getBody().length >= 3)
         );
     }
 
     @Test
     @Order(4)
     void deleteStudentId() {
-        String id = "12";
+        String id = "4";
         ResponseEntity<Void> response = restTemplate.exchange(BASE_URL + id,
                 HttpMethod.DELETE,
                 null,
