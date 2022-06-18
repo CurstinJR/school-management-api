@@ -21,7 +21,6 @@ import za.ac.cput.school_management_grp33.factory.location.CountryFactory;
 import za.ac.cput.school_management_grp33.repository.location.CountryRepository;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -72,7 +71,6 @@ class CityControllerTest {
     @Order(4)
     void getCitiesByCountryId(){
         ResponseEntity<City[]> response = restTemplate.getForEntity(baseUrl, City[].class);
-        System.out.println(Arrays.asList(Objects.requireNonNull(response.getBody())));
         assertNotNull(response.getBody());
     }
 
