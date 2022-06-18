@@ -29,8 +29,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 class EmployeeAddressRepositoryTest {
 
+    private final City city = City.builder().id("1").build();
     private final Address address = AddressFactory.build("50", "OceanTides", "35",
-            "Sand-ville", 8002, new City());
+            "Sand-ville", 8002, city);
     private final EmployeeAddress employeeAddress = EmployeeAddressFactory.build("50", address);
 
     @Autowired

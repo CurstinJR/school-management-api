@@ -100,13 +100,13 @@ class StudentServiceImplTest {
         assertNotNull(saveStudent);
         assertAll(
                 () -> assertEquals("100", saveStudent.getStudentId()),
+                () -> assertEquals("joeySo13@email.com", saveStudent.getEmail()),
                 () -> assertEquals("joeySo13@email.com", saveStudent.getEmail())
         );
     }
 
     @Test
     void findStudentByEmail() {
-        // given - stubbing - providing knowledge
         String email = "jackGo14@email.com";
         given(studentRepository.findStudentByEmail(email)).willReturn(Optional.of(student2));
         // when - action to be tested

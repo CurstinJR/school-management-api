@@ -28,7 +28,7 @@ class StudentAddressFactoryTest {
     @Test
     void buildNonNullValues() {
         StudentAddress studentAddress = StudentAddressFactory.build("845", address);
-        String staffId = studentAddress.getId();
+        String staffId = studentAddress.getStudentId();
         Address address = studentAddress.getAddress();
         assertEquals("845", staffId);
         assertEquals("Bayside", address.getStreetName());

@@ -29,6 +29,7 @@ class StudentRepositoryTest {
 
     private final Name name = NameFactory.build("Joeless", "Thirteen", "Roy");
     private final Student student = StudentFactory.build("100", "joe13@email.com", name);
+
     @Autowired
     private StudentRepository studentRepository;
 

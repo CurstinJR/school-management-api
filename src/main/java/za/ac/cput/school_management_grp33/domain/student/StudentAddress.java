@@ -26,22 +26,17 @@ public class StudentAddress implements Serializable {
 
     @Id
     @Column(name = "student_id")
-    private String id;
+    private String studentId;
 
     @Embedded
     private Address address;
-
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "student_id")
-    private Student student;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         StudentAddress studentAddress = (StudentAddress) o;
-        return id != null && Objects.equals(id, studentAddress.id);
+        return studentId != null && Objects.equals(studentId, studentAddress.studentId);
     }
 
     @Override

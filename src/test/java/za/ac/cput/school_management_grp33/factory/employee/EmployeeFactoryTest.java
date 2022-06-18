@@ -40,6 +40,7 @@ class EmployeeFactoryTest {
     void buildNullValues() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             EmployeeFactory.build(null, null, name);
+            EmployeeFactory.build(null, null, name);
         });
         String expectedMessage = "Invalid value for param:";
         String actualMessage = exception.getMessage();
@@ -57,6 +58,7 @@ class EmployeeFactoryTest {
     @Test
     void invalidEmployeeEmail() {
         Exception exception = assertThrows(InvalidEmailException.class, () -> {
+            EmployeeFactory.build("4", "joey13@email.", name);
             EmployeeFactory.build("4", "joey13@email.", name);
         });
         String expectedMessage = "EmailException";

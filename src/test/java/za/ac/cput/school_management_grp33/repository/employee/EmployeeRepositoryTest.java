@@ -29,6 +29,7 @@ class EmployeeRepositoryTest {
 
     private final Name name = NameFactory.build("Joeless", "Thirteen", "Roy");
     private final Employee employee = EmployeeFactory.build("100", "joe13@email.com", name);
+
     @Autowired
     private EmployeeRepository employeeRepository;
 

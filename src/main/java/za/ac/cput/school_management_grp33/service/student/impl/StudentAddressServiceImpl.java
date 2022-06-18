@@ -1,5 +1,6 @@
 package za.ac.cput.school_management_grp33.service.student.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.school_management_grp33.domain.student.StudentAddress;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class StudentAddressServiceImpl implements StudentAddressService {
 
     private final StudentAddressRepository studentAddressRepository;

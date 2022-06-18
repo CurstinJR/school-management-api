@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 public final class Utils {
 
     /**
-     * Using JMail to validate an email address. Enabling strict validator that restricts IP domain,
+     * Using JMail to validate email address. Enabling strict validator that restricts IP domain,
      * requires top level domain and restricts explicit source routing.
      *
      * @param email String

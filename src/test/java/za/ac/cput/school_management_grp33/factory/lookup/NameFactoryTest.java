@@ -5,14 +5,16 @@ import za.ac.cput.school_management_grp33.domain.lookup.Name;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+Author:Kevin Lionel Mombo Ndinga (218180500)
+NameFactoryTest.java;
+ */
 class NameFactoryTest {
 
     @Test
     void buildNullValues() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            NameFactory.build("Kevin", null, "Mombo");
-
-        });
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                NameFactory.build(null, "KevinMombo", null));
         String expectedMessage = "Invalid value for param:";
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));

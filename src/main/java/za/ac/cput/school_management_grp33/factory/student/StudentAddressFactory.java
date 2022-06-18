@@ -17,10 +17,11 @@ public class StudentAddressFactory {
         address = AddressFactory.build(address.getUnitNumber(),
                 address.getComplexName(),
                 address.getStreetNumber(),
-                address.getStreetName(), address.getPostalCode(),
+                address.getStreetName(),
+                address.getPostalCode(),
                 address.getCity());
         return StudentAddress.builder()
-                .id(studentId)
+                .studentId(studentId)
                 .address(address)
                 .build();
     }

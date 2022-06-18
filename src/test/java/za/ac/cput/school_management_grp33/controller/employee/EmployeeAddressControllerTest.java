@@ -41,8 +41,9 @@ class EmployeeAddressControllerTest {
     @Test
     @Order(1)
     void addUpdateEmployeeAddress() {
+        City city = City.builder().id("1").build();
         Address address = AddressFactory.build("50", "OceanTides", "35",
-                "Sand-ville", 8002, new City());
+                "Sand-ville", 8002, city);
         EmployeeAddress employeeAddress = EmployeeAddressFactory.build("220789451", address);
         ResponseEntity<EmployeeAddress> response = restTemplate.postForEntity(BASE_URL, employeeAddress,
                 EmployeeAddress.class);

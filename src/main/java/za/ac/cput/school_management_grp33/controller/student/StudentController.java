@@ -67,6 +67,7 @@ public class StudentController {
      * @return 201 and new Student object
      */
     @PostMapping
+
     public ResponseEntity<?> addUpdateStudent(@Valid @RequestBody Student student) {
         boolean existsByEmail = studentService.existsByEmail(student.getEmail());
         if (existsByEmail) {
@@ -85,6 +86,7 @@ public class StudentController {
      * @return 204 No content
      */
     @DeleteMapping("/{id}")
+
     public ResponseEntity<?> deleteStudentById(@PathVariable String id) {
         if (!studentService.existsById(id)) {
             String notFoundMessage = String.format(STUDENT_WITH_ID_NOT_FOUND_MSG, id);
