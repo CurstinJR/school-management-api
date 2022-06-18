@@ -11,15 +11,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.school_management_grp33.domain.location.City;
-import za.ac.cput.school_management_grp33.domain.lookup.Name;
 import za.ac.cput.school_management_grp33.exception.ResourceNotFoundException;
 import za.ac.cput.school_management_grp33.service.location.impl.CityServiceImpl;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/cities/")
+@RequestMapping("/api/cities")
 public class CityController {
+
     public static final String CITY_WITH_ID_NOT_FOUND_MSG = "City with id: %s not found";
 
     private final CityServiceImpl cityService;
@@ -60,11 +60,5 @@ public class CityController {
     @GetMapping()
     public List<City> readAll() {
         return cityService.findAll();
-    }
-
-    @GetMapping("employees/{cityId}")
-    public ResponseEntity<?> findEmployeesByCityId(@PathVariable String cityId){
-        List<Name> names = cityService.getEmployeesIn(cityId);
-        return  ResponseEntity.ok(names);
     }
 }

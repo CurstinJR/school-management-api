@@ -9,7 +9,6 @@ import lombok.*;
 import za.ac.cput.school_management_grp33.domain.location.City;
 
 import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.Objects;
 
@@ -28,7 +27,6 @@ public class Address {
     private int postalCode;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
     private City city;
 
     @Override

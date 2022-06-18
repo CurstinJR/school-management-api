@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/employees/address")
+@RequestMapping("/api/employees")
 public class EmployeeAddressController {
 
     public static final String EMPLOYEE_ADDRESS_WITH_ID_NOT_FOUND_MSG = "Employee with staffId: %s not found";
@@ -36,7 +36,7 @@ public class EmployeeAddressController {
      *
      * @return List of employee address objects
      */
-    @GetMapping
+    @GetMapping("/address")
     public ResponseEntity<List<EmployeeAddress>> getAllEmployeesAddress() {
         List<EmployeeAddress> employeesAddress = employeeAddressService.findAll();
         return ResponseEntity.ok(employeesAddress);
@@ -50,7 +50,7 @@ public class EmployeeAddressController {
      * @return 200 and Employee Address object SUCCESS
      */
 
-    @GetMapping("/{staffId}")
+    @GetMapping("/{staffId}/address")
     public ResponseEntity<?> getEmployeeAddressById(@PathVariable String staffId) {
         String notFoundMessage = String.format(EMPLOYEE_ADDRESS_WITH_ID_NOT_FOUND_MSG, staffId);
         EmployeeAddress employeeAddress = employeeAddressService.findEmployeeAddressByStaffId(staffId)
@@ -66,7 +66,7 @@ public class EmployeeAddressController {
      * @param employeeAddress Employee JSON payload
      * @return 201 and new Employee object
      */
-    @PostMapping
+    @PostMapping("/address")
     public ResponseEntity<?> addUpdateEmployeeAddress(@Valid @RequestBody EmployeeAddress employeeAddress) {
         EmployeeAddress saveEmployeeAddress = employeeAddressService.save(employeeAddress);
         return new ResponseEntity<>(saveEmployeeAddress, HttpStatus.CREATED);
@@ -79,7 +79,7 @@ public class EmployeeAddressController {
      * @param staffId String
      * @return 204 No content
      */
-    @DeleteMapping("/{staffId}")
+    @DeleteMapping("/{staffId}/address")
     public ResponseEntity<?> deleteEmployeeAddressById(@PathVariable String staffId) {
         if (!employeeAddressService.existsByStaffId(staffId)) {
             String notFoundMessage = String.format(EMPLOYEE_ADDRESS_WITH_ID_NOT_FOUND_MSG, staffId);
