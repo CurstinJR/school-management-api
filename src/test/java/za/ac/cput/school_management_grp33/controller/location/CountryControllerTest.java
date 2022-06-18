@@ -67,6 +67,7 @@ class CountryControllerTest {
     }
 
     @Test
+    @Order(4)
     void deleteStudentId() {
         String id = "12";
         ResponseEntity<Void> response = restTemplate.exchange(BASE_URL + id,
